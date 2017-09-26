@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.utils import timezone
 
 from blog.models import Post
 
@@ -31,15 +30,24 @@ def post_add(request):
         title = request.POST['title']
         content = request.POST['content']
         author = User.objects.get(username='admin')
-        post = Post(
+        post = Post.objects.create(
             title=title,
             content=content,
             author=author,
-            )
-        post.publish()
+        )
+        if request.POST.get('publish'):
+            post.publish()
         return redirect('post_detail', pk=post.pk)
     else:
         context = {
 
         }
         return render(request, 'blog/post_form.html', context)
+
+
+def post_delete(request, pk):
+    if request.method == 'POST':
+        post = Post.objects.get(pk=pk)
+        post.delete()
+        return redirect('post_list')
+    return redirect('post_detail', pk=pk)

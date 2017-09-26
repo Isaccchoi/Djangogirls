@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="col-lg-8 col-lg-offset-2">
+        <p class="text-right"><a href="{% url 'post_add' %}" class="btn btn-lg btn-warning">글 작성</a></p>
+    </div>
 
     {% for post in posts %}
-        <div class="col-lg-8 col-lg-offset-2 panel panel-default">
+        <div class="col-lg-8 col-lg-offset-2 panel panel-default" style="margin-top: 20px">
             <div class="panel-heading">
                 <h4>
                     <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title|truncatewords:6 }}</a>

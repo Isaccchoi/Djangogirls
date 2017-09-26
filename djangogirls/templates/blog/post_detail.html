@@ -9,8 +9,19 @@
             Published: {{ post.published_date }}
             <br/>
             Author: {{ post.author }}
+            <br/>
+            {% if post.published_date %}
+                <strong style="color: blue;">게시됨</strong>
+            {% else %}
+                <strong style="color: red;">게시되지 않음</strong>
+            {% endif %}
         </p>
         <p>{{ post.content }}</p>
+        <form action="{% url 'post_delete' pk=post.pk %}" method="post">
+            {% csrf_token %}
+            <p class="text-right"><input type="submit" value="글 삭제 " class="btn btn-lg btn-danger"></a>
+            </p>
+        </form>
     </div>
 
 {% endblock %}
