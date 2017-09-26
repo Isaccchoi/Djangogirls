@@ -5,6 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {# 부트스트랩 참조 #}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
     <title>Post List</title>
 </head>
 <body>
@@ -12,7 +14,7 @@
     {% for post in posts %}
         <div>
             <h3>{{ post.title }}</h3>
-            <p>{{ post.content|truncatewords:10 }}</p>
+            <p>{{ post.content|linebreaksbr|truncatewords:40 }}</p>
         </div>
         <br/>
     {% endfor %}

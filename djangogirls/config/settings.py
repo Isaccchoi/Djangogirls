@@ -14,8 +14,14 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 템플릿파일을 저장할 'templates'폴더
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-# 하위 폴더 : op.path.join(<path>, <들어갈 폴더>)
+# 정적 파일을 저장할 'static'폴더
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+# Django에서 정적 파일을 검색하고 가져올 폴더 목록
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
 
 
 # Quick-start development settings - unsuitable for production
