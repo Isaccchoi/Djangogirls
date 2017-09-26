@@ -1,39 +1,25 @@
-{% load static %}
-<!doctype html> 
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- 부트스트랩 참조 -->
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
-    <!-- custom css 참조 -->
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    <title>My Blog</title>
-</head>
-<body>
-    <div class="container">
+{% extends 'base.html' %}
+{% block content %}
+
     <div class="page-header">
         <h1 class="text-center">
             <a href="">Post List</a>
         </h1>
     </div>
-        {% for post in posts %}
-            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-lg-offset-2 panel panel-default">
-                <div class="panel-heading"><a href="{% url 'post_detail' post.id %}"><h4>{{ post.title|truncatewords:6 }}</a></h4></div>
-                <div class="panel-body"><p>{{ post.content|linebreaksbr|truncatewords:50 }}</p>
-                    <hr/>
-                    <p class="author">
-                        <small>
-                            <strong class="">Published:</strong> {{ post.published_date }}
-                            <br/>
-                            <strong>Author:</strong> {{ post.author }}
-                        </small>
-                    </p>
-                </div>
+    {% for post in posts %}
+        <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-lg-offset-2 panel panel-default">
+            <div class="panel-heading"><h4>{{ post.title|truncatewords:6 }}</h4></div>
+            <div class="panel-body"><p>{{ post.content|linebreaksbr|truncatewords:50 }}</p>
+                <hr/>
+                <p class="author">
+                    <small>
+                        <strong class="">Published:</strong> {{ post.published_date }}
+                        <br/>
+                        <strong>Author:</strong> {{ post.author }}
+                    </small>
+                </p>
             </div>
-        {% endfor %}
-    </div>
-</body>
-</html>
+        </div>
+    {% endfor %}
+
+{% endblock %}
