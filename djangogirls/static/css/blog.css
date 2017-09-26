@@ -31,3 +31,7 @@ hr {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+div.page-header {
+    margin-top: 20px;
+}
