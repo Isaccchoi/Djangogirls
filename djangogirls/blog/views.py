@@ -38,6 +38,16 @@ def post_add(request):
         if request.POST.get('publish'):
             post.publish()
         return redirect('post_detail', pk=post.pk)
+    elif request.method == 'GET':
+        context = {
+
+        }
+        return render(request, 'blog/post_form.html', context)
+    elif request.method == 'POST' and not request.POST.get('title') or not request.POST.get('content'):
+        context = {
+            'alert': True
+        }
+        return render(request, 'blog/post_form.html', context)
     else:
         context = {
 
