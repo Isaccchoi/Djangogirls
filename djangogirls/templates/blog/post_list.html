@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="col-lg-8 col-lg-offset-2">
-        <p class="text-right"><a href="{% url 'post_add' %}" class="btn btn-lg btn-warning">글 작성</a></p>
+        <a href="{% url 'post_add' %}" class="btn btn-lg btn-warning pull-right">글 작성</a>
     </div>
 
     {% for post in posts %}

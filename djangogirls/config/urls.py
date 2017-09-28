@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^$', post_list, name="post_list"),
     url(r'^post/(?P<pk>\d+)/', post_detail, name="post_detail"),
     url(r'^post/add/', post_add, name="post_add"),
-    url(r'^post/delete/(?P<pk>\d+)/', post_delete, name="post_delete"),
+    url(r'^post/(?P<pk>\d+)/delete/', post_delete, name="post_delete"),
 ]
