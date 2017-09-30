@@ -14,19 +14,20 @@
             {% csrf_token %}
             <div class="form-group">
                 <label for="input-title" id="basic-addon1">제목</label>
-                <input name="title" id="input-title" type="text" class="form-control" placeholder="제목"
+                <input name="title" id="input-title" type="text" class="form-control"
+                       value="{{ title }}"
                        aria-describedby="basic-addon1">
             </div>
 
             <div class="form-group">
                 <label for="input-content" class="input-title" id="basic-addon1">내용</label>
-                <textarea name="content" id="input-content" cols="30" rows="10" class="form-control"></textarea>
+                <textarea name="content" id="input-content" cols="30" rows="10" class="form-control">{{ content }}</textarea>
             </div>
             <div class="input-group">
                 <label for="input-checkbox" class="input-title">게시여부 </label>
                 <input name="publish" type="checkbox" id="input-checkbox" value="publish"/>
             </div><!-- /input-group -->
-            <button class="btn btn-danger" type="submit">글쓰기</button>
+            <button class="btn btn-danger pull-right" type="submit">글쓰기</button>
         </form>
     </div>
 
